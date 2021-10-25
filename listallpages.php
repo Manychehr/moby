@@ -18,7 +18,7 @@ function search_file_by($pattern, $flags = 0) {
     }
 
     foreach (glob($dirname . '/*', GLOB_ONLYDIR) as $dir)
-        $files[dirname($dir)] = search_file_by($dir .'/'. basename($pattern), $flags);
+        $files[$dir] = search_file_by($dir .'/'. basename($pattern), $flags);
     }
     return $files;
 }
