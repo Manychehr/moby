@@ -12,7 +12,11 @@ function search_file_by($pattern, $flags = 0) {
     $files = [];
     $files['..'] = glob($pattern, $flags);
     print_r(dirname($pattern));
-    print_r(glob(dirname($pattern) . '/*', GLOB_ONLYDIR));
+    $dirname = dirname($pattern);
+    if ($dirname = '.') {
+        $dirname = ''
+    }
+    print_r(glob( $dirname . '/*', GLOB_ONLYDIR));
     /* foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR) as $dir)
         print_r(basename($pattern));
         // $files[basename($pattern)] = search_file_by($dir .'/'. basename($pattern), $flags);
@@ -20,4 +24,4 @@ function search_file_by($pattern, $flags = 0) {
     return $files;
 }
 
-print_r(search_file_by('/*.html'));
+print_r(search_file_by('*.html'));
