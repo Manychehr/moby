@@ -20,4 +20,4 @@ function search_file_by($pattern, $flags = 0) {
     return $files;
 }
 
-print_r(search_file_by('*.html'));
+print_r(search_file_by('/*.html'));
