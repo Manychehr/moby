@@ -13,7 +13,7 @@ function search_file_by($pattern, $flags = 0) {
     $files['..'] = glob($pattern, $flags);
     foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir)
        
-        $files[basename($pattern)] = array_merge($files, search_file_by($dir .'/'. basename($pattern), $flags));
+        $files[basename($pattern)] = search_file_by($dir .'/'. basename($pattern), $flags);
     }
     return $files;
 }
