@@ -10,13 +10,11 @@ error_reporting(E_ALL);
  */
 function search_file_by($pattern, $flags = 0) {
    
-    // поиск по маске в папке
     $files = glob($pattern, $flags);
-    foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir)
+    /* foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir)
        
-        // поиск в подпапках
         $files = array_merge($files, search_file_by($dir .'/'. basename($pattern), $flags));
-    }
+    } */
     return $files;
 }
 
