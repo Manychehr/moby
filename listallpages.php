@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 function search_file_by($pattern, $flags = 0) {
     $files = [];
     $files['..'] = glob($pattern, $flags);
-    foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR | GLOB_NOSORT) as $dir)
+    foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR) as $dir)
         print_r(basename($pattern));
         // $files[basename($pattern)] = search_file_by($dir .'/'. basename($pattern), $flags);
     }
