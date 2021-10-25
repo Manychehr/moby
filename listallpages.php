@@ -14,7 +14,7 @@ function search_file_by($pattern, $flags = 0) {
     print_r(dirname($pattern));
     $dirname = dirname($pattern);
     if ($dirname = '.') {
-        $dirname = ''
+        $dirname = '';
     }
     print_r(glob( $dirname . '/*', GLOB_ONLYDIR));
     /* foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR) as $dir)
