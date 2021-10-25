@@ -10,17 +10,16 @@ error_reporting(E_ALL);
  */
 function search_file_by($pattern, $flags = 0) {
     $files = [];
-    $files['..'] = glob($pattern, $flags);
-    print_r(dirname($pattern));
+    $files = glob($pattern, $flags);
+
     $dirname = dirname($pattern);
     if ($dirname = '.') {
         $dirname = '';
     }
-    print_r(glob( $dirname . '/*', GLOB_ONLYDIR));
-    /* foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR) as $dir)
-        print_r(basename($pattern));
-        // $files[basename($pattern)] = search_file_by($dir .'/'. basename($pattern), $flags);
-    } */
+
+    foreach (glob($dirname . '/*', GLOB_ONLYDIR) as $dir)
+        $files[dirname($dir)] = search_file_by($dir .'/'. basename($pattern), $flags);
+    }
     return $files;
 }
 
